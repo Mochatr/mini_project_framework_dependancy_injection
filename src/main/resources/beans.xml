@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+
+    <!-- Shared DAO bean (no dependencies) -->
+    <bean id="dao" class="org.example.app.dao.DaoImpl"/>
+
+    <!--
+        Setter injection:
+        The container creates MetierImplSetter with the no-arg constructor,
+        then calls setDao(dao).
+    -->
+    <bean id="metierSetter" class="org.example.app.metier.MetierImplSetter">
+        <property name="dao" ref="dao"/>
+    </bean>
+
+    <!--
+        Constructor injection:
+        The container resolves <constructor-arg ref="dao"/> and passes it
+        directly to the matching constructor.
+    -->
+    <bean id="metierConstructor" class="org.example.app.metier.MetierImplConstructor">
+        <constructor-arg ref="dao"/>
+    </bean>
+
+    <!--
+        Field injection:
+        <property> with no matching setter → the container writes directly
+        to the declared field via reflection.
+        A literal <value> is coerced to the field's type (int here).
+    -->
+    <bean id="metierField" class="org.example.app.metier.MetierImplField">
+        <property name="dao"        ref="dao"/>
+        <property name="multiplier" value="10"/>
+    </bean>
+
+</beans>
