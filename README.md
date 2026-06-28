@@ -1,7 +1,7 @@
 # Mini Framework d'Injection de Dépendances — Compte Rendu
 
 > **Module :** Architecture JEE et Systèmes Distribués  
-> **Auteur :** Mochatr  
+> **Auteur :** Mohamed CHATR  
 > **Année :** 2025 / 2026
 
 ---
